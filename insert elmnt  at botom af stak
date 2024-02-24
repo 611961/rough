@@ -1,0 +1,32 @@
+#include<iostream>
+#include<stack>
+using namespace std;
+
+int main(){
+    stack<int>s;
+    stack<int>temp;
+      
+      int ad = 2 ;
+      
+      s.push(3);
+      s.push(4);
+      s.push(5);
+      s.push(6);
+      s.push(7);
+      
+      while(!s.empty()){
+        temp.push(s.top());
+        s.pop();
+      }
+      if(s.empty()){
+          s.push(ad);
+      }
+      while(!temp.empty()){
+          s.push(temp.top());
+          temp.pop();
+      }
+      while(!s.empty()){
+          cout<<s.top()<<" ";
+          s.pop();
+      }
+}
