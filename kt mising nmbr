@@ -1,0 +1,26 @@
+// 2,3,4,7    mising nmbrs -> 1,5,6   so find 3rd which is 6
+
+#include<iostream>
+using namespace std;
+int main(){
+	int n=5;
+	int ar[5]={2,3,4,7,11};
+	int k=4;
+	
+	// first fiure  out 2  near by indexes
+	// we r going to aply BS on  on thefrnces of nmbr  and k
+	
+	int l=0,hi=n-1;
+	
+	while(l<=hi){
+		int mid=(l+hi)/2;
+		int missing=ar[mid]-(mid+1);                       //formula for mising
+		if(missing <k){                 // by aplying this we have range so if we
+			l=mid+1;                           //  have 3 and need 2 more in range so
+		}
+		else{
+			hi=mid-1;
+		}
+	}
+	cout<<  k+hi +1 ;                          // for more
+}
