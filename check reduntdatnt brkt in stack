@@ -1,0 +1,42 @@
+#include <iostream>
+#include <stack>
+#include <string>
+
+using namespace std;
+
+bool hasRed(const string& s) {
+    stack<char> stk;
+
+    for (char ch=0; ch<s.length(); ch++) {
+        if (s[ch] == ')') {
+            // Check for redundant brackets
+            bool found = false;
+            while (!stk.empty() && stk.top() != '(') {
+                stk.pop();  // Pop all non-opening brackets
+                found = true;
+            }
+            stk.pop();  // Pop the matching opening bracket
+
+            if (!found) {
+                return true;  // Found a redundant closing bracket
+            }
+        } else {
+            stk.push(s[ch]);
+        }
+    }
+
+    return false;  // No redundant brackets found
+}
+
+int main() {
+    string s = "((a+b))";
+    cout << "Input: " << s << endl;
+
+    if (hasRed(s)) {
+        cout << "The input contains redundant brackets." << endl;
+    } else {
+        cout << "The input does not contain redundant brackets." << endl;
+    }
+
+    return 0;
+}
