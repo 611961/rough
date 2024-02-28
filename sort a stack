@@ -1,0 +1,45 @@
+#include <iostream>
+#include <stack>
+using namespace std;
+
+void insertSorted(stack<int>& s, int element) {
+    if (s.empty() || element > s.top()) {
+        s.push(element);
+    } 
+    else {
+        int temp = s.top();
+        s.pop();
+        insertSorted(s, element);
+        s.push(temp);
+    }
+}
+
+void sortStack(stack<int>& s) {
+    if (!s.empty()) {
+        int temp = s.top(); 
+        s.pop();
+        sortStack(s);
+        insertSorted(s, temp);
+    }
+}
+
+int main() {
+    stack<int> myStack;
+
+    myStack.push(3);
+    myStack.push(-5);
+    myStack.push(8);
+    myStack.push(5);
+    myStack.push(-3);
+
+    sortStack(myStack);
+
+    cout << "Stack elements after sorting in ascending order:" << endl;
+    while (!myStack.empty()) {
+        cout << myStack.top() << " ";
+        myStack.pop();
+    }
+    
+    return 0;
+}
+ 
