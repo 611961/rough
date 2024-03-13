@@ -1,0 +1,21 @@
+//sum of 2 elt in array elt = K then  find positions (i know brute this is better)
+#include <iostream>
+#include <map>
+#include <vector>
+using namespace std;
+
+int main() {
+    int k = 6;
+    int arr[] = {1, 4, 5, 6, 2, 8};
+    map<int, int> hash;
+
+    for (int i = 0; i < 6; i++) {
+        int store = k - arr[i];
+        if (hash.find(store) != hash.end()) {
+            cout << "Positions  are " << hash[store] << " and " << i << endl;
+        }
+        hash[arr[i]] = i;// hash me ary ki value ki pstn store kr
+    }
+
+    return 0;
+}
