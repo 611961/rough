@@ -1,0 +1,37 @@
+//consider a file which contains the record of students and 
+//starting with integer as a roll number access odd roll no. records
+#include<iostream>
+#include<fstream>
+#include<sstream>
+using namespace std;
+int main(){
+	ofstream file("file.txt");
+	if (file.is_open()){
+	file<<"1 nitin baba"<<endl;
+	file<<"2 rahul lodu\n";
+	file<<"3 nigote gote\n";
+	file<<"4 brijkishore pandey\n";	
+	file.close();}
+	
+	
+	else{
+		cout<<"file ko open kar na lode\n";
+	}
+	ifstream readfile("file.txt");
+	if(readfile.is_open()){
+		string line;
+		//getline is used to read a line from file $ store it as string
+		while(getline(readfile,line)){
+			int rollno;
+			string name,data;
+			//stringstream is use to pass or format the strings or manipulate the data
+			stringstream ss(line);
+			if(ss >>rollno>>name>>data){
+				if (rollno%2!=0){
+					cout<<"rolno "<<rollno<<",name "<<name<<",data "<<data<<endl;
+				}
+			}
+		}
+	}
+	readfile.close();
+}
