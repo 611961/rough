@@ -1,0 +1,20 @@
+public class A {
+    public void sum(int n1, int n2) {
+        int summ = n1 + n2 + 1;
+        System.out.println(summ);
+    }
+}
+
+public class B extends A {
+    public void sum(int n1, int n2) {
+        int summ = n1 + n2;
+        System.out.println(summ);
+    }
+}
+
+public class MainClass {
+    public static void main(String[] args) {
+        B obj = new B();
+        obj.sum(2, 4);
+    }
+}
