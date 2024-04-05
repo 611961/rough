@@ -1,0 +1,25 @@
+
+
+
+public class FactorialCalculator {
+    public static long calculateFactorial(int number) {
+        if (number < 0) {
+            throw new IllegalArgumentException("Factorial is not defined for negative numbers.");
+        }
+        
+        long factorial = 1;
+        
+        for (int i = 1; i <= number; i++) {
+            factorial *= i;
+        }
+        
+        return factorial;
+    }
+    
+    public static void main(String[] args) {
+        int number = 5; // Change this value to calculate the factorial of a different number
+        long result = calculateFactorial(number);
+        
+        System.out.println("Factorial of " + number + " is: " + result);
+    }
+}
