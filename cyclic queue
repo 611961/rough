@@ -1,0 +1,61 @@
+#include<iostream>
+using namespace std;
+
+const int n = 5;
+int arr[5];
+int rear = -1;
+int front = -1;
+
+bool enqueue(int val) {
+    if ((front == 0 && rear == n - 1) || (rear == (front - 1 + n) % n - 1)) {
+        cout << "Queue is full" << endl;
+        return false;
+    } 
+	else if (front == -1) {
+        front = rear = 0;
+        arr[rear] = val;
+        rear = (rear + 1) % n;
+    } 
+	else {      //for cycle
+        arr[rear] = val;
+        rear = (rear + 1) % n;
+    }
+    return true;
+}
+
+void dequeue() {
+    if (front == -1) {
+        cout << "Queue is empty" << endl;
+    } else { 
+        int ans = arr[front];
+        front = (front + 1) % n;
+
+        if (front == rear) {
+            front = rear = -1;
+        }
+        cout << "Dequeued element: " << ans << endl;
+    }
+}
+
+int main() {
+    int val;
+
+    while (true) {
+    	cout<<endl;
+        cout << "Enter a value to enqueue:\n";
+	cin >> val;
+	  cout<<" (1 to dequeue, 2 to exit): \n\n";
+        if (val == 1) {
+            dequeue();
+        } else if (val == 2) {
+            break;
+        } else {
+            if (enqueue(val)) {
+                cout << val << " enqueued successfully" << endl;
+            }
+        }
+    }
+
+    return 0;
+}
+
