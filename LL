@@ -1,0 +1,20 @@
+#include <iostream>
+#include <vector>
+using namespace std;
+
+struct node {
+    int data;
+    node* next;
+    node(int data1, node* next1) {
+        data = data1;
+        next = next1;
+    }
+};
+
+int main() {
+    vector<int>a = { 2, 4, 1, 6 };
+    node* y = new node(a[0], nullptr);
+    cout << y->next;
+    cout<< y->data;
+}
+
