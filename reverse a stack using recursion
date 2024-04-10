@@ -1,0 +1,46 @@
+#include <iostream>
+#include <stack>
+
+using namespace std;
+
+void insertAtBottom(stack<int>& stack, int item) {
+    if (stack.empty()) {
+        stack.push(item);
+    } else {
+        int temp = stack.top();
+        stack.pop();
+        insertAtBottom(stack, item);
+        stack.push(temp);
+    }
+}
+
+void reverseStack(stack<int>& stack) {
+    if (!stack.empty()) {
+        int temp = stack.top();
+        stack.pop();
+        reverseStack(stack);
+        insertAtBottom(stack, temp);
+    }
+}
+
+int main() {
+    stack<int> myStack;
+
+    // Push elements into the stack
+    myStack.push(1);
+    myStack.push(2);
+    myStack.push(3);
+    myStack.push(4);
+
+
+    reverseStack(myStack);       //calling function
+
+    cout << "Reversed Stack: ";
+    while (!myStack.empty()) {
+        cout << myStack.top() << " ";
+        myStack.pop();
+    }
+
+    return 0;
+}
+
