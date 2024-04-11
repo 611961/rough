@@ -1,0 +1,26 @@
+import java.io.*;
+import java.util.*;
+
+
+public class Solution {
+
+    public static void main(String[] args) {
+        
+        Scanner sc=new Scanner(System.in);
+        String A=sc.next();
+        String b="";
+        int sz=A.length()-1;
+        for(int i= sz;i>=0;i--){
+            b += A.charAt(i);
+        }
+        if(A.equals(b)){
+            System.out.print("Yes");
+        }
+        else{
+          System.out.print("No");   
+        }
+    }
+}
+
+
+
