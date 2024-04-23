@@ -1,0 +1,26 @@
+anagram stringvector<int> stringAnagram(vector<string> dictionary, vector<string> query) {
+    vector<int> v;
+    for (const auto& q : query) {
+        vector<int> freq(26, 0); // Initialize an array to store the frequency of each character
+
+        for (char c : q) {
+            freq[c - 'a']++; // Increment the frequency of the character
+        }
+
+        int count = 0;
+        for (const auto& d : dictionary) {
+            vector<int> tempFreq(26, 0); // Initialize temporary frequency array for each word in the dictionary
+
+            for (char c : d) {
+                tempFreq[c - 'a']++; // Increment the frequency of character in each word
+            }
+
+            if (freq == tempFreq) { // Compare the frequency arrays
+                count++; // Increment the count if the words are anagrams
+            }
+        }
+
+        v.push_back(count);
+    }
+    return v;
+}
